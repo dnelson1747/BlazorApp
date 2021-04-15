@@ -11,11 +11,19 @@
         <TaskList Name="Oil Change"></TaskList>
     </div>
     <div class="col-md-3">
-        <TaskList Name="Gas"></TaskList>
+        Gas
+        <RadzenTextBox Placeholder="Enter gas amount filled" Change=@(args => OnChange(args, "Enter gas amount filled")) />
     </div>
-    <div class="col-md-3">
-        <TaskList Name="Tire Pressure"></TaskList>
+    <div class="col-md-3">Tire Pressure
+        <input @bind-value="TirePressure" />
     </div>
 </div>
 <ArcGauge/>
 
+@code {
+    private int gas = 10;
+    partial void OnChange(string value, string name);
+    public int TirePressure { get; set; }
+
+
+}
