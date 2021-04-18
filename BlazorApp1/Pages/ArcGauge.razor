@@ -31,7 +31,11 @@
 
 @code {
     bool showValue = true;
-    public double gasValue = 5;
+
+    [Parameter]
+    public double gasValue { get; set; }
+
+
     IEnumerable<GaugeTickPosition> tickPositions = Enum.GetValues(typeof(GaugeTickPosition)).Cast<GaugeTickPosition>();
     GaugeTickPosition tickPosition = GaugeTickPosition.Outside;
 }
