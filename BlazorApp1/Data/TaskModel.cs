@@ -8,6 +8,7 @@ namespace BlazorApp1.Data
     public class TaskModel
     {
         public string Task { get; set; }
+        public int TirePressure { get; set; }
         //public bool IsStarted Task { get; set; }
         //public bool InProgress { get; set; }
         

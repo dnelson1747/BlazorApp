@@ -15,6 +15,7 @@
 
 <EditForm class="form-inline my-2" Model="@newTask" OnSubmit="AddTask">  
         <InputText class="form-control mx-2" @bind-Value="newTask.Task" />
+        <InputNumber class="form-control" @bind-Value="newTask.TirePressure"/>
         <button class="btn btn-outline-primary" type="submit">Add Task</button>
 </EditForm>
 
@@ -41,10 +42,12 @@
 
 @code {
     private List<TaskModel> taskList = new List<TaskModel>();
-    private TaskModel newTask = new TaskModel();
+    private TaskModel newTask = new TaskModel(); // newTask Task - Vaccuming the car, Iscomplete - false
+
 
     [Parameter]
     public string Name { get; set; }
+
 
     private int percentDone
     {
@@ -57,6 +60,6 @@
     private void AddTask()
     {
         taskList.Add(newTask);
-        newTask = new TaskModel();
+        newTask = new TaskModel(); //newtask : Task -null, iscomplete -false
     }
 }
