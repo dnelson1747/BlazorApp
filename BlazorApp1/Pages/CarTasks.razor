@@ -10,18 +10,20 @@
     <div class="col-md-3">
         <TaskList Name="Oil Change"></TaskList>
     </div>
-    @*<div class="col-md-3">
-        Gas
-        <RadzenTextBox Placeholder="Enter gas amount filled" />
-    </div>*@
-    <div class="col-md-3">
-        Gas
-        <InputNumber class="form-control mx-2" @bind-Value="gasValue" />
-        <ArcGauge gasValue="gasValue"></ArcGauge>
+    <div class="col-md-3">Gas
+        <input @bind-value="gasValue" />
     </div>
+    
     <div class="col-md-3">Tire Pressure
         <input @bind-value="TirePressure" />
     </div>
+    <br />
+    <div class="col-md-3">
+        Gas
+
+        <ArcGauge gasValue="gasValue"></ArcGauge>
+    </div>
+
 </div>
 
 @code {
