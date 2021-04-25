@@ -1,4 +1,4 @@
-﻿@page "/arc-gauge"
+﻿@*@page "/arc-gauge"*@
 
 
 <h1>Gas Gauge</h1>
@@ -6,7 +6,7 @@
     <div class="col-md-6 col-sm-12 p-4">
         <RadzenArcGauge Style="width: 100%; height: 250px; stroke: green;">
             <RadzenArcGaugeScale Step="20" Min="0" Max="100" MinorStep="2" Radius="1.5" TickPosition=@tickPosition Y="0.9" Margin="0">
-                <RadzenArcGaugeScaleValue Value=@gasValue ShowValue=@showValue>
+                <RadzenArcGaugeScaleValue Value=@ValueOfGas ShowValue=@showValue>
                     <Template Context="pointer">
                         <h4>
                             @pointer.Value <sup>% Full</sup>
@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-6 col-sm-12 p-4">
         <p>
-            <label>Value <RadzenSlider Min="0" Max="100" @bind-Value=@gasValue /></label>
+            <label>Value <RadzenSlider Min="0" Max="100" @bind-Value=@ValueOfGas /></label>
         </p>
         @*<p>
              <label>Show the pointer value <RadzenCheckBox @bind-Value=@showValue /></label>
@@ -32,10 +32,13 @@
 @code {
     bool showValue = true;
 
+
     [Parameter]
-    public double gasValue { get; set; }
+    public double ValueOfGas { get; set; }
 
 
-    IEnumerable<GaugeTickPosition> tickPositions = Enum.GetValues(typeof(GaugeTickPosition)).Cast<GaugeTickPosition>();
+    
+    //IEnumerable<GaugeTickPosition> tickPositions = Enum.GetValues(typeof(GaugeTickPosition)).Cast<GaugeTickPosition>();
+
     GaugeTickPosition tickPosition = GaugeTickPosition.Outside;
 }

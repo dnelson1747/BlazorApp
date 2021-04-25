@@ -12,17 +12,24 @@
     </div>
     <div class="col-md-3">
         Gas
-        <RadzenTextBox Placeholder="Enter gas amount filled" Change=@(args => OnChange(args, "Enter gas amount filled")) />
+        <EditForm class="form-inline my-2" Model="@gasValue">
+            <InputNumber class="form-control mx-2" @bind-Value="gasValue" />
+        </EditForm>
     </div>
-    <div class="col-md-3">Tire Pressure
+    <div class="col-md-3">
+        Tire Pressure
         <input @bind-value="TirePressure" />
     </div>
 </div>
-<ArcGauge/>
+<ArcGauge ValueOfGas="gasValue"></ArcGauge>
+<br />
+<RadialGauge valueTire="TirePressure"></RadialGauge>
 
 @code {
-    private int gas = 10;
-    partial void OnChange(string value, string name); 
+
+ 
+    public int gasValue { get; set; }
+
     public int TirePressure { get; set; }
 
 
