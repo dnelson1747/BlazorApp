@@ -18,19 +18,41 @@
     </div>
     <div class="col-md-3">
         Tire Pressure
-        <input @bind-value="TirePressure" />
+        <input id="tirePressure" @bind-value="TirePressure" />
+        <br />
+        <button @onclick="TirePressureChanged">Check Tire Pressure</button>
+        <div>@Result</div>
     </div>
 </div>
 <ArcGauge ValueOfGas="gasValue"></ArcGauge>
 <br />
-<RadialGauge valueTire="TirePressure"></RadialGauge>
 
-@code {
 
- 
-    public int gasValue { get; set; }
+@code { public int gasValue { get; set; }
 
     public int TirePressure { get; set; }
 
+    private string Result;
 
-}
+    public void TirePressureChanged()
+    {
+        if (TirePressure < 30)
+        {
+            Result = "Tire Pressure too low";
+        }
+        else if (TirePressure >30 && TirePressure <=34)
+        {
+            Result = "Tire Pressure is good";
+        }
+        else
+        {
+            Result = "Tire Pressure is too high";
+        }
+    }
+
+ 
+
+    }
+
+
+

@@ -1,0 +1,45 @@
+﻿
+@page "/datagridradzen"
+@inject ProductService productService
+@using BlazorApp1.Data
+
+
+<h3>Data Grid Using Radzen Component Library</h3>
+@if (product == null)
+{
+    <p>Loading...</p>
+}
+
+else
+{
+    <RadzenGrid AllowPaging="true" AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" PageSize="4" AllowColumnResize="true"
+                Data="@product" TItem="Product" ColumnWidth="150px">
+        <Columns>
+            <RadzenGridColumn TItem="Product" Property="ProdID" Title="Product ID"></RadzenGridColumn>
+            <RadzenGridColumn TItem="Product" Property="ProdName" Title="Product Name"></RadzenGridColumn>
+            <RadzenGridColumn TItem="Product" Property="SalesPrice" Title="Sales Price"></RadzenGridColumn>
+            
+            <RadzenGridColumn TItem="Product" Property="PurchaseDate" Title="Purchase Date">
+                <Template Context="data">
+                    @String.Format("{0:d}", data.PurchaseDate)
+                </Template>
+            </RadzenGridColumn>
+            
+            <RadzenGridColumn TItem="Product" Property="Price" Title="Price"></RadzenGridColumn>
+        </Columns>
+    </RadzenGrid>
+}
+
+
+
+@code {
+    IEnumerable<Product> product;
+
+    protected override async Task OnInitializedAsync()
+    {
+        product = await Task.Run(() => productService.ProductList());
+    }
+
+    //public double price = SalesPrice * 1;
+}
+
