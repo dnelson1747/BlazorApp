@@ -18,12 +18,21 @@ namespace BlazorApp1.Data
 
         };
 
-        
-        public async Task<List<Product>> ProductList()
-        {
-            return await Task.FromResult(products);
-        }
 
+
+        //public async Task<List<Product>> ProductList()
+        //{
+
+        //    return await Task.FromResult(products);
+
+        //}
+
+
+
+        public List<Product> ProductList()
+        {
+            return products;
+        }
 
     }
 }

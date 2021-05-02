@@ -1,0 +1,41 @@
+﻿@page "/TableGrid" 
+@inject ProductService productService
+
+<h3>TableGrid</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Sales Price</th>
+            <th scope="col">Purchase Date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (Product x in productList)
+        {
+            <tr>
+                <td>@x.ProdID</td>
+                <td>@x.ProdName</td>
+                <td>@x.SalesPrice</td>
+                <td>@x.PurchaseDate</td>
+            </tr>
+
+        }
+
+
+    </tbody>
+</table>
+
+@code {
+
+    IEnumerable<Product> productList { get
+        {
+            return productService.ProductList();
+        } }
+
+
+
+}

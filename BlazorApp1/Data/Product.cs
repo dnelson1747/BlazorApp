@@ -5,9 +5,15 @@ using System.Threading.Tasks;
 
 namespace BlazorApp1.Data
 {
+    
     public class Product
     {
-        public int ProdID { get; set; }
+        private int _name;
+        public int ProdID
+        {
+            get => _name;
+            set => _name;
+        }
         public string ProdName { get; set; }
         public double SalesPrice { get; set; }
         public DateTime PurchaseDate { get; set; }
